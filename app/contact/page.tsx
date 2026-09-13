@@ -1,0 +1,10 @@
+import { Phone, Instagram, MapPin, ArrowUpRight } from 'lucide-react';
+import { SectionHeading, LocationSection, FinalCta } from '@/components/sections/static-sections';
+import { ContactAction } from '@/components/sections/contact-action';
+import { pageMetadata } from '@/lib/seo';
+import { restaurantConfig as r } from '@/config/restaurant';
+export const metadata = pageMetadata('Get in Touch', `Find ${r.name} in ${r.locality}, ${r.city}. View location details, opening hours, and contact information.`, '/contact');
+const App = () => {
+  return <><section className="container max-w-7xl px-5 py-14 sm:px-8 lg:py-20"><SectionHeading centered eyebrow="WE’D LOVE TO HEAR FROM YOU" title={'Good conversations\nstart with a hello.'} description="A question about the menu? Planning a family meal? Find the right way to reach the kitchen." /><div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">{[{ kind: 'phone' as const, icon: Phone, title: 'Give us a call', description: r.phone ?? 'Verified number coming soon' }, { kind: 'maps' as const, icon: MapPin, title: 'Come on over', description: `${r.locality}, ${r.city}` }, { kind: 'instagram' as const, icon: Instagram, title: 'Stay in the loop', description: r.instagramUrl ? 'Follow the kitchen' : 'Verified profile coming soon' }].map((action) => <ContactAction key={action.kind} kind={action.kind} className="group rounded-lg border border-border bg-card p-6 text-left transition-shadow hover:shadow-editorial"><action.icon size={24} strokeWidth={1.3} className="mb-5 text-primary" /><h2 className="flex items-center justify-between gap-3 font-serif text-xl">{action.title}<ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></h2><p className="mt-3 text-[11px] leading-6 text-muted-foreground">{action.description}</p></ContactAction>)}</div>{r.demo && <p className="mt-6 text-center text-[11px] text-muted-foreground">This is an independent concept. Contact channels require verified restaurant details.</p>}</section><LocationSection page /><FinalCta /></>;
+};
+export default App;

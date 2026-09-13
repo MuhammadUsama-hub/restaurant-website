@@ -31,8 +31,19 @@ dist/
 dist
 
 # Environment files (comprehensive coverage)
+.env
+.env.*
+!.env.example
+!.env.sample
 *token.json*
 *credentials.json*
+
+# Builder-local metadata and generated test artifacts
+.emergent/
+memory/
+test_reports/
+playwright-report/
+test-results/
 
 # Logs and debug files
 npm-debug.log*
@@ -80,3 +91,4 @@ memory/test_credentials.md
 # Mobile development
 android-sdk/node_modules/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node
 node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+node_modules/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node
